@@ -1,4 +1,5 @@
 d3.csv('State_GDP.csv', function (d){
+    console.log(d[0])
     return{
         state: d.Area,
         gdp: d.GDP
@@ -22,5 +23,29 @@ d3.csv('State_GDP.csv', function (d){
                         '</strong></div>'].join('');
             }
         } 
-    })
+    });
+
+    for(var i = 0; i < data.length; i++){
+        let st = d3.select('.' + data[i].state);
+
+        if(data[i].GDP < 40000){
+            st.style('fill', '#97ED8A');
+        } else if(data[i].GDP > 40000 && data[i].GDP < 45000){
+            st.style('fill', '#8FE039');
+        } else if(data[i].GDP > 45000 && data[i].GDP < 50000){
+            st.style('fill', '#45BF55');
+        } else if(data[i].GDP > 50000 && data[i].GDP < 55000){
+            st.style('fill', '#1F9C10');
+        } else if(data[i].GDP > 55000 && data[i].GDP < 60000){
+            st.style('fill', '#167F39');
+        } else if(data[i].GDP > 60000 && data[i].GDP < 65000){
+            st.style('fill', '#044C29');
+        } else if(data[i].GDP > 65000){
+            st.style('fill', '#00261C');
+        }
+    }
+
+    d3.select(window).on('resize', function (){
+        map.resize();
+    });
 });
