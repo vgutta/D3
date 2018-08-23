@@ -3,7 +3,7 @@ var margin = {top: 5, right: 5, bottom: 5, left: 5},
     width = 1060 - margin.left - margin.right,
     height = 620 - margin.top - margin.bottom;
 
-var projection = d3.geo.albers()
+var projection = d3.geo.albersUsa()
     .scale(1280)
     .translate([width/2, height/2]);
 
@@ -34,8 +34,9 @@ d3.csv("us-pop.csv", function(data){
             var dataValue = parseFloat(data[i].value);
             for (var j = 0; j < json.features.length; j++) {
                 var jsonState = json.features[j].properties.name;
-                if (dataState = jsonState) {
+                if (dataState == jsonState) {
                     json.features[j].properties.value = dataValue;
+                    break;
                 }
             }
         }
