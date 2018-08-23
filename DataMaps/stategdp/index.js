@@ -7,11 +7,11 @@ var gdp = d3.map();
 var path = d3.geoPath();
 
 var x = d3.scaleLinear()
-    .domain([1, 10])
+    .domain([0, 3000000])
     .rangeRound([600, 860]);
 
 var color = d3.scaleThreshold()
-    .domain(d3.range(2, 10))
+    .domain(d3.range(30000, 3000000))
     .range(d3.schemeBlues[9]);
 
 var g = svg.append("g")
@@ -49,7 +49,7 @@ g.call(d3.axisBottom(x)
 
 d3.queue()
     .defer(d3.json, "https://d3js.org/us-10m.v1.json")
-    .defer(d3.csv, "State_GDP.tsv", function(d) { gdp.set(d.id, +d.rate); })
+    .defer(d3.csv, "State_GDP.tsv", function(d) { gdp.set(d.Area, +d.GDP); })
     .await(ready);
 
 function ready(error, us) {
