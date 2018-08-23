@@ -1,4 +1,4 @@
-d3.csv('State_GDP.csv', function (d){
+d3.csv('./State_GDP.csv', function (d){
     console.log(d[0])
     return{
         state: d.Area,
