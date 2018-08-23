@@ -1,24 +1,3 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-
-.counties {
-  fill: none;
-}
-
-.states {
-  fill: none;
-  stroke: #fff;
-  stroke-linejoin: round;
-}
-
-</style>
-<svg width="960" height="600"></svg>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-<script src="https://d3js.org/topojson.v2.min.js"></script>
-<script>
-
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
@@ -32,7 +11,7 @@ var x = d3.scaleLinear()
     .rangeRound([600, 860]);
 
 var color = d3.scaleThreshold()
-    .domain(d3.range(2, 10))
+    .domain(d3.range(1, 10))
     .range(d3.schemeBlues[9]);
 
 var g = svg.append("g")
@@ -91,5 +70,3 @@ function ready(error, us) {
       .attr("class", "states")
       .attr("d", path);
 }
-
-</script>
